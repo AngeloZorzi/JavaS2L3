@@ -43,11 +43,14 @@ public class Main {
         Order o2 = new Order(2L, "Delivered", LocalDate.of(2021, 2, 20), LocalDate.of(2021, 2, 28),
                 List.of(p7, p8), c2);
         Order o3 = new Order(3L, "Processing", LocalDate.of(2021, 3, 5), LocalDate.of(2021, 3, 10),
-                List.of(p3, p5, p4), c3);
+                List.of(p3, p5, p4,p9), c3);
         Order o4 = new Order(4L, "Delivered", LocalDate.of(2021, 3, 25), LocalDate.of(2021, 4, 1),
                 List.of(p6, p9,p1), c2);
 
-        
+        List<Order> orders = List.of(o1, o2, o3, o4);
 
+        List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals("Baby"))).collect(Collectors.toList());
+        System.out.println("Baby orders from Teletubbies: ");
+        babyOrders.forEach(System.out::println);
     }
 }
