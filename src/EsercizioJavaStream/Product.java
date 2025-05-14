@@ -15,6 +15,15 @@ public class Product {
 
     public String getCategory() { return category; }
     public Double getPrice() { return price; }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setPrice(Double price) { this.price = price; }
     public String toString() {
         return name + " (" + category + ", €" + price + ")";

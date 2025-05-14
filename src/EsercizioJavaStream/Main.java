@@ -2,7 +2,7 @@ package EsercizioJavaStream;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +33,7 @@ public class Main {
         List<Product> over100 = products.stream().filter(product -> product.getCategory().equals("Books")&&product.getPrice()>100).collect(Collectors.toList());
         System.out.println("Books that costs as my grandpa would say 'Più di una gamba'");
         over100.forEach(System.out::println);
+        System.out.println();
 
         Customer c1 = new Customer(1L, "Laa-la", 1);
         Customer c2 = new Customer(2L, "Po", 2);
@@ -52,5 +53,12 @@ public class Main {
         List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals("Baby"))).collect(Collectors.toList());
         System.out.println("Baby orders from Teletubbies: ");
         babyOrders.forEach(System.out::println);
+        System.out.println();
+
+        List<Product> boysDiscount = products.stream().filter(product -> product.getCategory().equals("Boys")).map(product -> new Product(product.getId(), product.getName(), product.getCategory(), product.getPrice()*0.9)).collect(Collectors.toList());
+        System.out.println("Boys' products on sale:");
+        boysDiscount.forEach(System.out::println);
+
     }
+
 }
