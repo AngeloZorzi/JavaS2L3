@@ -2,7 +2,6 @@ package EsercizioJavaStream;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +57,13 @@ public class Main {
         List<Product> boysDiscount = products.stream().filter(product -> product.getCategory().equals("Boys")).map(product -> new Product(product.getId(), product.getName(), product.getCategory(), product.getPrice()*0.9)).collect(Collectors.toList());
         System.out.println("Boys' products on sale:");
         boysDiscount.forEach(System.out::println);
+        System.out.println();
 
+        LocalDate start = LocalDate.of(2021, 2, 1);
+        LocalDate end = LocalDate.of(2021, 4, 1);
+
+        List<Order> premiumAccountsOrders = orders.stream().filter(order -> order.getCustomer().getTier() == 2).filter(order -> !order.getOrderDate().isBefore(start) && !order.getOrderDate().isAfter(end)).collect(Collectors.toList());
+        System.out.println("Tier 2 orders:");
+        premiumAccountsOrders.forEach(System.out::println);
     }
-
 }
