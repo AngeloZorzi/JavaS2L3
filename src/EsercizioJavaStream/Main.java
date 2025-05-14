@@ -1,5 +1,6 @@
 package EsercizioJavaStream;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,5 +33,21 @@ public class Main {
         List<Product> over100 = products.stream().filter(product -> product.getCategory().equals("Books")&&product.getPrice()>100).collect(Collectors.toList());
         System.out.println("Books that costs as my grandpa would say 'Più di una gamba'");
         over100.forEach(System.out::println);
+
+        Customer c1 = new Customer(1L, "Laa-la", 1);
+        Customer c2 = new Customer(2L, "Po", 2);
+        Customer c3 = new Customer(3L, "Tinky-Winky", 2);
+
+        Order o1 = new Order(1L, "Shipped", LocalDate.of(2021, 1, 10), LocalDate.of(2021, 1, 15),
+                List.of(p1, p4,p2), c1);
+        Order o2 = new Order(2L, "Delivered", LocalDate.of(2021, 2, 20), LocalDate.of(2021, 2, 28),
+                List.of(p7, p8), c2);
+        Order o3 = new Order(3L, "Processing", LocalDate.of(2021, 3, 5), LocalDate.of(2021, 3, 10),
+                List.of(p3, p5, p4), c3);
+        Order o4 = new Order(4L, "Delivered", LocalDate.of(2021, 3, 25), LocalDate.of(2021, 4, 1),
+                List.of(p6, p9,p1), c2);
+
+        
+
     }
 }
